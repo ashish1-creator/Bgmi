@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Add inside <head> in all HTML files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+    <div class="card">
+        <form action="result.html" method="get">
+            <h2>Enter BGMI User Details</h2>
+            <label for="username">BGMI User Name:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="startdate">When did you start playing?</label>
+            <input type="date" id="startdate" name="startdate" required>
+
+            <label for="gunskins">Gun Skins You Own:</label>
+            <input type="text" id="gunskins" name="gunskins" placeholder="e.g. M416 Glacier, AKM, etc." required>
+
+            <label for="killratio">Kill Ratio:</label>
+            <input type="number" step="0.01" id="killratio" name="killratio" required>
+
+            <label for="headshot">Headshot Percentage (%):</label>
+            <input type="number" step="0.01" id="headshot" name="headshot" required>
+
+            <label for="matches">Matches Played:</label>
+            <input type="number" id="matches" name="matches" required>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <br>
+    
+   
+    <script src = "React.js"></script>
+</body>
+</html>

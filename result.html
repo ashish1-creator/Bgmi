@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Add inside <head> in all HTML files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BGMI User Results</title>
+    <link rel="stylesheet" href="style2.css">
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById('username').textContent = params.get('username') || '-';
+            document.getElementById('startdate').textContent = params.get('startdate') || '-';
+            document.getElementById('gunskins').textContent = params.get('gunskins') || '-';
+            document.getElementById('killratio').textContent = params.get('killratio') || '-';
+            document.getElementById('headshot').textContent = params.get('headshot') || '-';
+            document.getElementById('matches').textContent = params.get('matches') || '-';
+
+            // Determine status based on kill ratio
+            let kd = parseFloat(params.get('killratio'));
+            let status = '';
+            if (!isNaN(kd)) {
+                if (kd < 2) {
+                    status = "You are a noob. Improve your skills and comeback stronger.";
+                } else if (kd >= 2 && kd < 4) {
+                    status = "You are a moderate player. All the best, improve your skills!";
+                } else if (kd >= 4) {
+                    status = "You are a pro player champ, keep moving!";
+                }
+            } else {
+                status = "-";
+            }
+           document.getElementById('player-status').textContent = params.get('resultMsg') || status;
+
+            document.getElementById('resultMsg').textContent = params.get('resultMsg') || '';
+        }
+    </script>
+    <style>
+        .status-highlight {
+            margin: 2rem auto 0 auto;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            width: fit-content;
+            background: linear-gradient(to right, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+            color: #222;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>BGMI User Details</h2>
+        <p><strong>User Name:</strong> <span id="username"></span></p>
+        <p><strong>Started Playing:</strong> <span id="startdate"></span></p>
+        <p><strong>Gun Skins:</strong> <span id="gunskins"></span></p>
+        <p><strong>Kill Ratio:</strong> <span id="killratio"></span></p>
+        <p><strong>Headshot %:</strong> <span id="headshot"></span></p>
+        <p><strong>Matches Played:</strong> <span id="matches"></span></p>
+        <hr>
+        <p style="font-size:1.2rem; font-weight:bold; color:#fff;">
+            <span id="resultMsg"></span>
+        </p>
+    </div>
+    <div class="status-highlight">
+        Player Status: <span id="player-status"></span>
+    </div>
+</body>
+</html>
